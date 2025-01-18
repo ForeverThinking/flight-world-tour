@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlightWorldTour.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+281694f278b6a51d37be3816a5c5156301330554")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1519fa939eed983c07651d77ee56985a675deac5")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlightWorldTour.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlightWorldTour.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

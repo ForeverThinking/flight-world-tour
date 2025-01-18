@@ -1,26 +1,29 @@
 using System.Diagnostics;
+using FlightWorldTour.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using FlightWorldTour.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlightWorldTour.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(
+    ILogger<HomeController> logger,
+    IFlightService flightService) : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
+    [AllowAnonymous]
+    [HttpGet]
     public IActionResult Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        var lastFlightData = flightService.GetLastFlight();
+        var homeViewModel = new HomePageViewModel
+        {
+            OriginAirportName = lastFlightData.OriginAirportName,
+            OriginCountry = lastFlightData.OriginCountry,
+            DestinationAirportName = lastFlightData.DestinationAirportName,
+            DestinationCountry = lastFlightData.DestinationCountry
+        };
+        
+        return View(homeViewModel);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

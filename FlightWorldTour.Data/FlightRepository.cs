@@ -3,8 +3,18 @@ using FlightWorldTour.Core.Interfaces;
 
 namespace FlightWorldTour.Data;
 
-public class FlightRepository : IFlightRepository
+public class FlightRepository(ApplicationDbContext context) : IFlightRepository
 {
+    public LastFlightRecord GetLastFlight() =>
+        context.Flights
+            .OrderByDescending(fl => fl.FlightAdded)
+            .Select(fl => new LastFlightRecord(
+                fl.Origin.AirportName,
+                fl.Origin.Country,
+                fl.Destination.AirportName,
+                fl.Destination.Country))
+            .FirstOrDefault();
+
     public FlightBusinessModel GetSingleFlight(Guid id)
     {
         throw new NotImplementedException();

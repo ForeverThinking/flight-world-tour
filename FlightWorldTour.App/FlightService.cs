@@ -3,8 +3,10 @@ using FlightWorldTour.Core.Interfaces;
 
 namespace FlightWorldTour.App;
 
-public class FlightService : IFlightService
+public class FlightService(IFlightRepository repository) : IFlightService
 {
+    public LastFlightRecord GetLastFlight() => repository.GetLastFlight();
+
     public FlightBusinessModel GetSingleFlight()
     {
         throw new NotImplementedException();
