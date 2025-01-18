@@ -5,6 +5,15 @@
 
 <div class="text-center">
     <h1>Welcome to my DC-3 World Tour</h1>
-    <p>The last flight will go here...</p>
-    <p>Last flight airport name: @Model.OriginAirportName</p>
+    <h2>Last Flight</h2>
+    <table class="table">
+        <tr>
+            <td>Origin:</td>
+            <td>@Model.OriginAirportName, @Model.OriginCountry</td>
+        </tr>
+        <tr>
+            <td>Destination:</td>
+            <td>@Model.DestinationAirportName, @Model.DestinationCountry</td>
+        </tr>
+    </table>
 </div>

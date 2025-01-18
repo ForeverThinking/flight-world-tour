@@ -17,7 +17,7 @@ public class FlightServiceTests
     }
 
     [Fact]
-    public void GetLastFlight_Called_ReturnsCorrectData()
+    public async Task GetLastFlight_Called_ReturnsCorrectData()
     {
         // Arrange
         var flightData = new LastFlightRecord(
@@ -26,10 +26,10 @@ public class FlightServiceTests
             DestinationAirportName: "Schiphol",
             DestinationCountry: "Netherlands");
 
-        A.CallTo(() => _repoFake.GetLastFlight()).Returns(flightData);
+        A.CallTo(() => _repoFake.GetLastFlightAsync()).Returns(flightData);
         
         // Act
-        var result = _flightService.GetLastFlight();
+        var result = await _flightService.GetLastFlightAsync();
         
         // Assert
         result.Should().Be(flightData);

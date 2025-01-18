@@ -4,7 +4,7 @@ namespace FlightWorldTour.Core.Interfaces;
 
 public interface IFlightService
 {
-    LastFlightRecord GetLastFlight();
+    Task<LastFlightRecord?> GetLastFlightAsync();
     FlightBusinessModel GetSingleFlight();
     ICollection<FlightBusinessModel> GetAllFlights();
     FlightBusinessModel AddFlight(FlightBusinessModel flight);
