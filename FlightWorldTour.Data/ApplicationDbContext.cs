@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FlightWorldTour.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlightWorldTour.Data;
 
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext(options)
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
+    public DbSet<AirportDbModel> Airports { get; set; }
+    public DbSet<FlightDbModel> Flights { get; set; }
 }

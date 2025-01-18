@@ -1,7 +1,8 @@
+using FlightWorldTour.App;
+using FlightWorldTour.Core.Interfaces;
 using FlightWorldTour.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using FlightWorldTour.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IFlightService, FlightService>();
+builder.Services.AddTransient<IFlightRepository, FlightRepository>();
 
 var app = builder.Build();
 
