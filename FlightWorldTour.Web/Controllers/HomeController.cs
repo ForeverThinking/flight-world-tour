@@ -12,9 +12,9 @@ public class HomeController(
 {
     [AllowAnonymous]
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var lastFlightData = flightService.GetLastFlight();
+        var lastFlightData = await flightService.GetLastFlightAsync();
         var homeViewModel = new HomePageViewModel
         {
             OriginAirportName = lastFlightData.OriginAirportName,

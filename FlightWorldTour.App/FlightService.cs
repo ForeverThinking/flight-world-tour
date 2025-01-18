@@ -5,7 +5,7 @@ namespace FlightWorldTour.App;
 
 public class FlightService(IFlightRepository repository) : IFlightService
 {
-    public LastFlightRecord GetLastFlight() => repository.GetLastFlight();
+    public async Task<LastFlightRecord?> GetLastFlightAsync() => await repository.GetLastFlightAsync();
 
     public FlightBusinessModel GetSingleFlight()
     {
